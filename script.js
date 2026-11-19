@@ -17,8 +17,8 @@ const sections = document.querySelectorAll("main section[id]");
 const typingText = document.getElementById("typing-text");
 const currentYear = document.getElementById("current-year");
 const themeToggle = document.querySelector(".theme-toggle");
-const themeIcon = document.querySelector(".theme-icon");
-const themeText = document.querySelector(".theme-text");
+
+
 const langToggle = document.querySelector(".lang-toggle");
 const langFlag = document.querySelector(".lang-flag");
 
@@ -29,6 +29,18 @@ const STORAGE_KEYS = {
 
 const translations = {
   en: {
+    "notes.topic0.body": "Define the target, permitted techniques and stop conditions. Record the lab setup and keep a clean baseline before testing.",
+    "notes.topic0.title": "Scope \u0026 preparation",
+    "notes.topic1.body": "Identify hosts, ports and services in scope. Verify service versions and turn observations into testable hypotheses; an open port alone is not a vulnerability.",
+    "notes.topic1.title": "Reconnaissance \u0026 enumeration",
+    "notes.topic2.body": "Map routes, inputs and user roles. Review authentication, session handling, access control and file upload behavior. Compare expected and actual responses in the lab.",
+    "notes.topic2.title": "Web application testing",
+    "notes.topic3.body": "Reproduce a suspected issue with the smallest necessary test. Save the request, response and reproduction steps. Separate confirmed impact from assumptions.",
+    "notes.topic3.title": "Validate \u0026 collect evidence",
+    "notes.topic4.body": "Inspect users, permissions, services and configuration. In a practice lab, investigate how excessive privileges or exposed secrets could create an escalation path.",
+    "notes.topic4.title": "Linux \u0026 Windows lab review",
+    "notes.topic5.body": "Document the affected component, evidence, impact and remediation. Provide repeatable steps, retest the fix and restore the lab after the exercise.",
+    "notes.topic5.title": "Report, remediate \u0026 retest",
     "control.themeDark": "Dark",
     "control.themeLight": "Light",
     "nav.about": "About",
@@ -40,7 +52,7 @@ const translations = {
     "nav.contact": "Contact",
     "hero.eyebrow": "Hi, this is",
     "hero.name": "Quoc Thai",
-    "hero.role": "Information Security Student | Aspiring Pentester | CTF Player",
+    "hero.role": "Security • Red Team • Pentest Web • RE • OSINT",
     "hero.description": "I focus on penetration testing, vulnerability assessment, and hands-on security labs, using tools such as Kali Linux, Nmap, and Metasploit.",
     "hero.description2": "I regularly take part in CTF challenges and Hack The Box labs to sharpen my skills, and document what I learn through write-ups.",
     "hero.quote": "No system is unbreakable — only unexplored.",
@@ -117,9 +129,9 @@ const translations = {
     "writeups.c4Title": "Basic Binary Analysis",
     "writeups.c4Desc": "Reading program behavior, identifying strings, checking file formats, and building a repeatable analysis process.",
     "writeups.readMore": "Read more",
-    "notes.eyebrow": "Security Notes",
-    "notes.title": "Short technical references",
-    "notes.subtitle": "Concise notes for concepts, commands, detection logic, and investigation workflows.",
+    "notes.eyebrow": "Pentest field notes",
+    "notes.title": "From reconnaissance to reporting",
+    "notes.subtitle": "A practical checklist for learning and testing in authorized labs. Open a topic to review the workflow.",
     "notes.n1": "PowerShell suspicious behavior",
     "notes.n2": "WMI Event Subscription",
     "notes.n3": "PsExec-like remote execution",
@@ -130,24 +142,24 @@ const translations = {
     "notes.legendActive": "Active alert node",
     "notes.legendHover": "Hover to inspect incident",
     "roadmap.eyebrow": "Learning Roadmap",
-    "roadmap.title": "Cybersecurity learning path",
-    "roadmap.subtitle": "A practical path toward SOC analysis, detection engineering fundamentals, and stronger portfolio documentation.",
-    "roadmap.s1": "Networking fundamentals",
-    "roadmap.s2": "Linux and Windows fundamentals",
-    "roadmap.s3": "Log analysis and SIEM basics",
-    "roadmap.s4": "SOC alert triage",
-    "roadmap.s5": "MITRE ATT&CK and threat detection",
-    "roadmap.s6": "Digital forensics and malware basics",
-    "roadmap.s7": "CTF practice and project documentation",
-    "roadmap.s8": "Build a strong SOC Analyst portfolio",
-    "roadmap.s1Desc": "TCP/IP, routing, switching, DNS, HTTP, ports and basic network troubleshooting.",
-    "roadmap.s2Desc": "Operating system basics, users, services, permissions, logs and command-line workflow.",
-    "roadmap.s3Desc": "Collecting, reading and correlating security logs through SIEM investigation workflows.",
-    "roadmap.s4Desc": "Classifying alerts, reviewing context, reducing false positives and escalating real incidents.",
-    "roadmap.s5Desc": "Mapping behavior to tactics and techniques, then improving detection coverage.",
-    "roadmap.s6Desc": "Reviewing artifacts, persistence traces, file behavior, suspicious commands and IOCs.",
-    "roadmap.s7Desc": "Solving challenges, writing reports, documenting evidence and building repeatable notes.",
-    "roadmap.s8Desc": "Publishing labs, write-ups, detection notes and practical investigation projects.",
+    "roadmap.title": "My path toward penetration testing",
+    "roadmap.subtitle": "A learning plan built on networking and system foundations. These milestones describe the direction I am working toward, not completed certifications.",
+    "roadmap.s1": "Networking \u0026 HTTP foundations",
+    "roadmap.s2": "Linux, Windows \u0026 scripting",
+    "roadmap.s3": "Scope \u0026 enumeration",
+    "roadmap.s4": "Web application security",
+    "roadmap.s5": "Vulnerability validation",
+    "roadmap.s6": "Privilege escalation labs",
+    "roadmap.s7": "End-to-end practice",
+    "roadmap.s8": "Reporting \u0026 retesting",
+    "roadmap.s1Desc": "Review TCP/IP, DNS, routing, TLS and the HTTP request/response lifecycle.",
+    "roadmap.s2Desc": "Build confidence with users, permissions, services, Bash and Python for small lab automation tasks.",
+    "roadmap.s3Desc": "Define rules of engagement, map the attack surface and practice service enumeration with Nmap in labs.",
+    "roadmap.s4Desc": "Practice authentication, access control, input validation and session testing with Burp Suite in training labs.",
+    "roadmap.s5Desc": "Reproduce findings safely in a controlled lab, collect evidence and distinguish false positives from confirmed issues.",
+    "roadmap.s6Desc": "Study Linux and Windows misconfigurations, service permissions and escalation paths in practice environments.",
+    "roadmap.s7Desc": "Work through CTF and Hack The Box labs, connecting enumeration, validation and clear documentation.",
+    "roadmap.s8Desc": "Write concise pentest reports with evidence, impact, remediation and retest results; publish permitted lab write-ups.",
     "contact.eyebrow": "Contact",
     "contact.title": "Connect and collaborate",
     "contact.subtitle": "For projects, write-ups, labs, and cybersecurity learning documentation.",
@@ -156,6 +168,18 @@ const translations = {
     "footer.backTop": "Back to top",
   },
   vi: {
+    "notes.topic0.body": "Xác định mục tiêu, kỹ thuật được phép và điều kiện dừng. Ghi lại cấu hình lab và lưu trạng thái ban đầu trước khi kiểm thử.",
+    "notes.topic0.title": "Phạm vi \u0026 chuẩn bị",
+    "notes.topic1.body": "Xác định host, cổng và dịch vụ trong phạm vi. Xác minh phiên bản và lập giả thuyết kiểm thử; cổng mở chưa đủ để kết luận có lỗ hổng.",
+    "notes.topic1.title": "Trinh sát \u0026 liệt kê dịch vụ",
+    "notes.topic2.body": "Lập danh sách đường dẫn, đầu vào và vai trò người dùng. Kiểm tra xác thực, phiên đăng nhập, phân quyền và tải tệp. So sánh phản hồi mong đợi với thực tế trong lab.",
+    "notes.topic2.title": "Kiểm thử ứng dụng web",
+    "notes.topic3.body": "Tái hiện vấn đề bằng phép thử tối thiểu cần thiết. Lưu request, response và các bước tái hiện. Phân biệt tác động đã xác minh với giả định.",
+    "notes.topic3.title": "Xác minh \u0026 thu thập bằng chứng",
+    "notes.topic4.body": "Rà soát tài khoản, quyền, dịch vụ và cấu hình. Trong lab thực hành, tìm hiểu cách quyền dư thừa hoặc thông tin bí mật bị lộ có thể tạo đường leo thang đặc quyền.",
+    "notes.topic4.title": "Rà soát lab Linux \u0026 Windows",
+    "notes.topic5.body": "Ghi rõ thành phần bị ảnh hưởng, bằng chứng, tác động và cách khắc phục. Cung cấp các bước tái hiện, kiểm thử lại bản sửa và khôi phục lab sau bài tập.",
+    "notes.topic5.title": "Báo cáo, khắc phục \u0026 kiểm thử lại",
     "control.themeDark": "Tối",
     "control.themeLight": "Sáng",
     "nav.about": "Giới thiệu",
@@ -167,7 +191,7 @@ const translations = {
     "nav.contact": "Liên hệ",
     "hero.eyebrow": "Xin chào, mình là",
     "hero.name": "Quốc Thái",
-    "hero.role": "Sinh viên An toàn thông tin | Định hướng Pentester | CTF Player",
+    "hero.role": "Security • Red Team • Pentest Web • RE • OSINT",
     "hero.description": "Mình tập trung học kiểm thử xâm nhập, đánh giá lỗ hổng và thực hành bảo mật với Kali Linux, Nmap, Metasploit trong môi trường lab.",
     "hero.description2": "Mình thường xuyên tham gia các thử thách CTF, luyện tập trên Hack The Box và ghi lại kiến thức qua các bài write-up.",
     "hero.quote": "Không có hệ thống nào bất khả xâm phạm — chỉ là chưa ai khám phá ra.",
@@ -240,9 +264,9 @@ const translations = {
     "writeups.c4Title": "Phân tích binary cơ bản",
     "writeups.c4Desc": "Đọc hành vi chương trình, xác định strings, kiểm tra định dạng file và xây dựng quy trình phân tích lặp lại được.",
     "writeups.readMore": "Đọc thêm",
-    "notes.eyebrow": "Ghi chú bảo mật",
-    "notes.title": "Tài liệu kỹ thuật ngắn",
-    "notes.subtitle": "Ghi chú ngắn gọn về khái niệm, câu lệnh, logic phát hiện và quy trình điều tra.",
+    "notes.eyebrow": "Sổ tay pentest",
+    "notes.title": "Từ trinh sát đến báo cáo",
+    "notes.subtitle": "Checklist thực hành khi học và kiểm thử trong lab được phép. Mở từng chủ đề để xem quy trình.",
     "notes.n1": "Hành vi PowerShell đáng ngờ",
     "notes.n2": "WMI Event Subscription",
     "notes.n3": "Thực thi từ xa kiểu PsExec",
@@ -253,24 +277,24 @@ const translations = {
     "notes.legendActive": "Điểm cảnh báo đang hoạt động",
     "notes.legendHover": "Rê chuột để xem sự kiện",
     "roadmap.eyebrow": "Lộ trình học",
-    "roadmap.title": "Lộ trình học an toàn thông tin",
-    "roadmap.subtitle": "Lộ trình thực hành hướng đến SOC analysis, nền tảng detection engineering và tài liệu hóa portfolio tốt hơn.",
-    "roadmap.s1": "Nền tảng mạng máy tính",
-    "roadmap.s2": "Nền tảng Linux và Windows",
-    "roadmap.s3": "Phân tích log và SIEM cơ bản",
-    "roadmap.s4": "Triage alert SOC",
-    "roadmap.s5": "MITRE ATT&CK và threat detection",
-    "roadmap.s6": "Điều tra số và malware cơ bản",
-    "roadmap.s7": "Luyện CTF và tài liệu hóa dự án",
-    "roadmap.s8": "Xây dựng portfolio SOC Analyst mạnh",
-    "roadmap.s1Desc": "TCP/IP, routing, switching, DNS, HTTP, port và xử lý sự cố mạng cơ bản.",
-    "roadmap.s2Desc": "Nền tảng hệ điều hành, user, service, permission, log và thao tác dòng lệnh.",
-    "roadmap.s3Desc": "Thu thập, đọc và liên kết log bảo mật thông qua quy trình điều tra trên SIEM.",
-    "roadmap.s4Desc": "Phân loại alert, rà soát ngữ cảnh, giảm false positive và escalation sự cố thật.",
-    "roadmap.s5Desc": "Ánh xạ hành vi vào tactic và technique, sau đó cải thiện độ phủ phát hiện.",
-    "roadmap.s6Desc": "Rà soát artifact, dấu vết persistence, hành vi file, lệnh đáng ngờ và IOC.",
-    "roadmap.s7Desc": "Giải challenge, viết báo cáo, ghi lại bằng chứng và xây dựng ghi chú lặp lại được.",
-    "roadmap.s8Desc": "Công bố lab, write-up, ghi chú detection và các dự án điều tra thực hành.",
+    "roadmap.title": "Lộ trình hướng đến kiểm thử xâm nhập",
+    "roadmap.subtitle": "Kế hoạch học dựa trên nền tảng mạng và hệ thống. Các mốc thể hiện hướng phát triển, không phải chứng chỉ hay thành tích đã hoàn thành.",
+    "roadmap.s1": "Nền tảng mạng \u0026 HTTP",
+    "roadmap.s2": "Linux, Windows \u0026 scripting",
+    "roadmap.s3": "Phạm vi \u0026 liệt kê dịch vụ",
+    "roadmap.s4": "Bảo mật ứng dụng web",
+    "roadmap.s5": "Xác minh lỗ hổng",
+    "roadmap.s6": "Lab leo thang đặc quyền",
+    "roadmap.s7": "Thực hành quy trình hoàn chỉnh",
+    "roadmap.s8": "Báo cáo \u0026 kiểm thử lại",
+    "roadmap.s1Desc": "Ôn tập TCP/IP, DNS, định tuyến, TLS và vòng đời request/response HTTP.",
+    "roadmap.s2Desc": "Củng cố tài khoản, phân quyền, dịch vụ, Bash và Python cho các tác vụ tự động hóa nhỏ trong lab.",
+    "roadmap.s3Desc": "Xác định quy tắc kiểm thử, lập bản đồ bề mặt tấn công và luyện liệt kê dịch vụ bằng Nmap trong lab.",
+    "roadmap.s4Desc": "Thực hành kiểm tra xác thực, phân quyền, đầu vào và phiên đăng nhập bằng Burp Suite trong lab.",
+    "roadmap.s5Desc": "Tái hiện phát hiện trong lab có kiểm soát, thu thập bằng chứng và phân biệt cảnh báo sai với lỗi đã xác minh.",
+    "roadmap.s6Desc": "Tìm hiểu cấu hình sai trên Linux/Windows, quyền dịch vụ và đường leo thang đặc quyền trong môi trường thực hành.",
+    "roadmap.s7Desc": "Luyện CTF và lab Hack The Box, kết nối liệt kê dịch vụ, xác minh và tài liệu hóa rõ ràng.",
+    "roadmap.s8Desc": "Viết báo cáo pentest có bằng chứng, tác động, khắc phục và kết quả kiểm thử lại; công bố write-up lab được phép.",
     "contact.eyebrow": "Liên hệ",
     "contact.title": "Kết nối và hợp tác",
     "contact.subtitle": "Dành cho dự án, write-up, lab và tài liệu học an toàn thông tin.",
@@ -280,7 +304,7 @@ const translations = {
   },
 };
 
-let currentLanguage = localStorage.getItem(STORAGE_KEYS.language) || "en";
+let currentLanguage = "en";
 let currentTheme = localStorage.getItem(STORAGE_KEYS.theme) || "dark";
 let messageIndex = 0;
 
@@ -293,7 +317,7 @@ function translate(key) {
 }
 
 function applyLanguage(language) {
-  currentLanguage = language === "vi" ? "vi" : "en";
+  currentLanguage = "en";
   localStorage.setItem(STORAGE_KEYS.language, currentLanguage);
   root.lang = currentLanguage;
 
@@ -336,17 +360,15 @@ function applyTheme(theme) {
   currentTheme = theme === "light" ? "light" : "dark";
   root.dataset.theme = currentTheme;
   localStorage.setItem(STORAGE_KEYS.theme, currentTheme);
-  document.querySelector('meta[name="theme-color"]')?.setAttribute("content", currentTheme === "dark" ? "#071018" : "#f5f8fb");
+  document.querySelector('meta[name="theme-color"]')?.setAttribute("content", currentTheme === "dark" ? "#080808" : "#f5f5f5");
   updateThemeButton();
 }
 
 function updateThemeButton() {
-  if (!themeToggle || !themeIcon || !themeText) return;
+  if (!themeToggle) return;
   const isLight = currentTheme === "light";
-  themeToggle.setAttribute("aria-pressed", String(isLight));
+  themeToggle.setAttribute("aria-checked", String(isLight));
   themeToggle.setAttribute("aria-label", isLight ? "Switch to dark mode" : "Switch to light mode");
-  themeIcon.textContent = isLight ? "☀" : "☾";
-  themeText.textContent = isLight ? translate("control.themeLight") : translate("control.themeDark");
 }
 
 applyTheme(getPreferredTheme());
@@ -722,259 +744,4 @@ setInterval(rotateTerminalText, 2800);
     });
     card.addEventListener('mouseleave', clearHighlights);
   });
-})();
-/* =========================================================
-   Threat map hover popup with EN / VI support
-   ========================================================= */
-
-(() => {
-  const threatData = {
-    en: [
-      {
-        category: "Web Exploitation",
-        severity: "Critical",
-        region: "United States",
-        title: "Critical file transfer vulnerability exploitation",
-        summary:
-          "Large-scale exploitation of a file transfer platform vulnerability led to widespread incident response and urgent containment.",
-        date: "May 2023",
-        cve: "CVE-2023-34362"
-      },
-      {
-        category: "Ransomware Activity",
-        severity: "High",
-        region: "Brazil",
-        title: "Regional ransomware deployment campaign",
-        summary:
-          "Coordinated ransomware activity disrupted operations and forced rapid containment, isolation, and recovery planning.",
-        date: "Jul 2021",
-        cve: "Multi-stage intrusion"
-      },
-      {
-        category: "Threat Intelligence",
-        severity: "Medium",
-        region: "Germany",
-        title: "Campaign mapped to MITRE ATT&CK techniques",
-        summary:
-          "Observed intrusion activity was mapped to ATT&CK tactics and techniques to improve detection coverage and analyst reporting.",
-        date: "Oct 2022",
-        cve: "ATT&CK mapping"
-      },
-      {
-        category: "Persistence Investigation",
-        severity: "High",
-        region: "Kenya",
-        title: "Suspicious persistence execution chain detected",
-        summary:
-          "Investigation identified repeated execution behavior tied to stealthy persistence and suspicious task configuration.",
-        date: "Mar 2024",
-        cve: "Persistence pattern"
-      },
-      {
-        category: "Supply Chain Security",
-        severity: "Critical",
-        region: "Japan",
-        title: "High-impact enterprise software vulnerability",
-        summary:
-          "A severe vulnerability triggered urgent patching, exposure review, and threat hunting across enterprise environments.",
-        date: "Dec 2021",
-        cve: "CVE-2021-44228"
-      },
-      {
-        category: "Recon Monitoring",
-        severity: "Medium",
-        region: "Australia",
-        title: "Suspicious internet-facing reconnaissance activity",
-        summary:
-          "Repeated scanning and service probing activity was observed and escalated for monitoring, tuning, and IOC validation.",
-        date: "Jun 2024",
-        cve: "Recon activity"
-      }
-    ],
-
-    vi: [
-      {
-        category: "Khai thác web",
-        severity: "Nghiêm trọng",
-        region: "Hoa Kỳ",
-        title: "Khai thác lỗ hổng nghiêm trọng trên nền tảng truyền tệp",
-        summary:
-          "Hoạt động khai thác quy mô lớn nhắm vào một nền tảng truyền tệp đã dẫn đến rò rỉ dữ liệu và yêu cầu phản ứng sự cố khẩn cấp.",
-        date: "05/2023",
-        cve: "CVE-2023-34362"
-      },
-      {
-        category: "Hoạt động ransomware",
-        severity: "Cao",
-        region: "Brazil",
-        title: "Chiến dịch triển khai ransomware theo khu vực",
-        summary:
-          "Một chiến dịch ransomware có tổ chức đã làm gián đoạn hoạt động hệ thống, buộc đội ngũ phải nhanh chóng cô lập, khoanh vùng và khôi phục.",
-        date: "07/2021",
-        cve: "Xâm nhập nhiều giai đoạn"
-      },
-      {
-        category: "Tình báo mối đe dọa",
-        severity: "Trung bình",
-        region: "Đức",
-        title: "Chiến dịch được ánh xạ theo MITRE ATT&CK",
-        summary:
-          "Hoạt động xâm nhập được ánh xạ với các tactic và technique trong MITRE ATT&CK nhằm cải thiện khả năng phát hiện và báo cáo phân tích.",
-        date: "10/2022",
-        cve: "Ánh xạ ATT&CK"
-      },
-      {
-        category: "Điều tra persistence",
-        severity: "Cao",
-        region: "Kenya",
-        title: "Phát hiện chuỗi thực thi persistence đáng ngờ",
-        summary:
-          "Quá trình điều tra ghi nhận hành vi thực thi lặp lại liên quan đến persistence ẩn và cấu hình tác vụ đáng ngờ.",
-        date: "03/2024",
-        cve: "Mẫu hành vi persistence"
-      },
-      {
-        category: "Bảo mật chuỗi cung ứng",
-        severity: "Nghiêm trọng",
-        region: "Nhật Bản",
-        title: "Lỗ hổng nghiêm trọng ảnh hưởng phần mềm doanh nghiệp",
-        summary:
-          "Một lỗ hổng nghiêm trọng buộc các hệ thống phải ưu tiên vá lỗi, rà soát bề mặt tấn công và săn tìm dấu hiệu khai thác.",
-        date: "12/2021",
-        cve: "CVE-2021-44228"
-      },
-      {
-        category: "Giám sát trinh sát",
-        severity: "Trung bình",
-        region: "Úc",
-        title: "Phát hiện hoạt động dò quét hạ tầng public-facing",
-        summary:
-          "Nhiều hành vi quét dịch vụ và thăm dò hệ thống public-facing được ghi nhận, sau đó được đưa vào quy trình giám sát và xác minh IOC.",
-        date: "06/2024",
-        cve: "Hoạt động reconnaissance"
-      }
-    ]
-  };
-
-  const mapStage = document.querySelector(".threat-map-stage");
-  const pins = document.querySelectorAll(".map-pin");
-  const card = document.getElementById("threatHoverCard");
-  const connector = document.getElementById("threatConnector");
-
-  const hoverSeverity = document.getElementById("hoverSeverity");
-  const hoverRegion = document.getElementById("hoverRegion");
-  const hoverCategory = document.getElementById("hoverCategory");
-  const hoverTitle = document.getElementById("hoverTitle");
-  const hoverSummary = document.getElementById("hoverSummary");
-  const hoverDate = document.getElementById("hoverDate");
-  const hoverCVE = document.getElementById("hoverCVE");
-
-  if (!mapStage || !pins.length || !card || !connector) return;
-
-  let activeThreatIndex = 0;
-
-  function getCurrentThreatLanguage() {
-    return currentLanguage === "vi" ? "vi" : "en";
-  }
-
-  function setCardContent(index) {
-    const lang = getCurrentThreatLanguage();
-    const item = threatData[lang][index];
-
-    if (!item) return;
-
-    activeThreatIndex = index;
-
-    hoverSeverity.textContent = item.severity;
-    hoverRegion.textContent = item.region;
-    hoverCategory.textContent = item.category;
-    hoverTitle.textContent = item.title;
-    hoverSummary.textContent = item.summary;
-    hoverDate.textContent = item.date;
-    hoverCVE.textContent = item.cve;
-  }
-
-  function placePopup(pin) {
-    const mapRect = mapStage.getBoundingClientRect();
-    const pinRect = pin.getBoundingClientRect();
-
-    const pinCenterX = pinRect.left - mapRect.left + pinRect.width / 2;
-    const pinCenterY = pinRect.top - mapRect.top + pinRect.height / 2;
-
-    const cardWidth = Math.min(360, mapRect.width - 40);
-    const cardHeight = Math.min(220, mapRect.height - 40);
-
-    let cardLeft = pinCenterX + 42;
-    let cardTop = pinCenterY - cardHeight / 2;
-
-    if (cardLeft + cardWidth > mapRect.width - 20) {
-      cardLeft = pinCenterX - cardWidth - 42;
-    }
-
-    if (cardLeft < 20) cardLeft = 20;
-    if (cardTop < 20) cardTop = 20;
-
-    if (cardTop + cardHeight > mapRect.height - 20) {
-      cardTop = mapRect.height - cardHeight - 20;
-    }
-
-    card.style.left = `${cardLeft}px`;
-    card.style.top = `${cardTop}px`;
-
-    const cardAnchorX = cardLeft > pinCenterX ? cardLeft : cardLeft + cardWidth;
-    const cardAnchorY = cardTop + cardHeight / 2;
-
-    const dx = cardAnchorX - pinCenterX;
-    const dy = cardAnchorY - pinCenterY;
-    const distance = Math.sqrt(dx * dx + dy * dy);
-    const angle = Math.atan2(dy, dx) * (180 / Math.PI);
-
-    connector.style.left = `${pinCenterX}px`;
-    connector.style.top = `${pinCenterY}px`;
-    connector.style.width = `${distance}px`;
-    connector.style.transform = `rotate(${angle}deg)`;
-    connector.style.opacity = "1";
-
-    card.classList.add("show");
-  }
-
-  function showPopup(pin) {
-    const idx = Number(pin.dataset.threat);
-
-    setCardContent(idx);
-
-    pins.forEach((item) => item.classList.remove("active"));
-    pin.classList.add("active");
-
-    placePopup(pin);
-  }
-
-  function hidePopup() {
-    card.classList.remove("show");
-    connector.style.opacity = "0";
-    pins.forEach((pin) => pin.classList.remove("active"));
-  }
-
-  pins.forEach((pin) => {
-    pin.addEventListener("mouseenter", () => showPopup(pin));
-    pin.addEventListener("click", () => showPopup(pin));
-
-    pin.addEventListener("mouseleave", () => {
-      setTimeout(() => {
-        if (!card.matches(":hover")) hidePopup();
-      }, 120);
-    });
-  });
-
-  card.addEventListener("mouseleave", hidePopup);
-
-  if (langToggle) {
-    langToggle.addEventListener("click", () => {
-      setTimeout(() => {
-        setCardContent(activeThreatIndex);
-      }, 80);
-    });
-  }
-
-  setCardContent(0);
 })();

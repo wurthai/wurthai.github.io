@@ -1,0 +1,48 @@
+/* Image-led archive cards. Scoped to the writeups listing. */
+.writeups-list .writeup-archive { padding: 52px 0 30px; }
+.writeups-list .writeup-archive > .container,
+.writeups-list .more-writeups > .container { width: min(1400px, 94%); max-width: 1400px; }
+.writeups-list .section-heading { width: 100%; max-width: none; margin: 0 0 32px; }
+.writeups-list .section-heading h1 { margin: 8px 0; font-size: clamp(2rem, 4vw, 3rem); }
+.writeups-list #markdown-posts { display: grid; grid-template-columns: minmax(0, 1fr); width: 100%; max-width: none; gap: clamp(24px, 4.2vw, 60px); }
+.writeup-feature { overflow: hidden; border-radius: 16px; background: #292929; box-shadow: 0 8px 24px #00000012; }
+.writeup-feature-link { display: flex; min-height: 320px; color: inherit; text-decoration: none; }
+.writeup-cover { position: relative; flex: 0 0 40%; min-width: 0; overflow: hidden; background: #1a1a1a; clip-path: polygon(0 0, 92% 0, 100% 100%, 0 100%); }
+.writeup-cover img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .3s ease; }
+.writeup-cover-fallback { display: flex; align-items: center; min-height: 100%; padding: 36px; color: #e7e7e7; font-size: clamp(1.4rem, 3vw, 2.8rem); font-weight: 700; overflow-wrap: anywhere; background: radial-gradient(ellipse at top right, #424242, #1a1a1a 75%); }
+.writeup-feature-body { flex: 1; min-width: 0; padding: 32px clamp(24px, 2.4vw, 38px) 38px; }
+.writeup-meta { display: flex; justify-content: flex-end; align-items: center; flex-wrap: wrap; gap: 12px 30px; min-height: 28px; margin-bottom: 26px; color: #afafaf; font-size: clamp(.875rem, 1.4vw, 1.125rem); }
+.writeup-meta-item { display: inline-flex; align-items: center; gap: 12px; white-space: nowrap; }
+.writeup-meta svg { width: 20px; height: 20px; flex-shrink: 0; }
+.writeup-feature h2 { margin: 0 0 26px; color: #797979; font-size: clamp(1.5rem, 2.6vw, 2.4rem); font-weight: 650; line-height: 1.3; letter-spacing: .02em; overflow-wrap: anywhere; }
+.writeup-summary { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; margin: 0; color: #b3b3b3; font-size: clamp(1rem, 1.6vw, 1.25rem); line-height: 1.9; overflow-wrap: anywhere; }
+.writeup-feature:nth-child(even) .writeup-feature-link { flex-direction: row-reverse; }
+.writeup-feature:nth-child(even) .writeup-cover { clip-path: polygon(0 0, 100% 0, 100% 100%, 8% 100%); }
+.writeup-feature-link:hover img { transform: scale(1.035); }
+.writeup-feature-link:hover h2 { color: #979797; }
+.writeup-feature-link:focus-visible { outline: 3px solid #949494; outline-offset: -4px; border-radius: 16px; }
+.writeups-list .more-writeups-inner { width: 100%; max-width: none; }
+:root[data-theme="light"] .writeup-feature { background: #f4f4f4; box-shadow: 0 4px 20px #2525250a; }
+:root[data-theme="light"] .writeup-feature h2 { color: #474747; }
+:root[data-theme="light"] .writeup-feature-link:hover h2 { color: #373737; }
+:root[data-theme="light"] .writeup-meta,
+:root[data-theme="light"] .writeup-summary { color: #606060; }
+@media (min-width: 1500px) { .writeup-feature-link { min-height: 350px; } }
+@media (max-width: 760px) {
+  .writeups-list .writeup-archive { padding-top: 32px; }
+  .writeup-feature-link,
+  .writeup-feature:nth-child(even) .writeup-feature-link { flex-direction: column; }
+  .writeup-cover,
+  .writeup-feature:nth-child(even) .writeup-cover { flex: auto; width: 100%; aspect-ratio: 660 / 420; clip-path: none; }
+  .writeup-feature-body { padding: 24px; }
+  .writeup-meta { justify-content: flex-start; gap: 10px 20px; margin-bottom: 20px; }
+  .writeup-feature h2 { margin-bottom: 16px; }
+}
+@media (prefers-reduced-motion: reduce) { .writeup-cover img { transition: none; } .writeup-feature-link:hover img { transform: none; } }
+
+/* Preserve the full supplied event artwork, including its text and logo. */
+.writeup-cover--contain { background: #000000; }
+.writeup-cover--contain img { object-fit: contain; padding: 24px; }
+.writeup-cover--contain .writeup-cover-fallback { visibility: hidden; }
+.writeup-cover--light { background: #efefef; }
+.writeup-feature-link:hover .writeup-cover--contain img { transform: none; }

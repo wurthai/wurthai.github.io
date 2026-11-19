@@ -1,0 +1,30 @@
+[
+  {
+    "slug": "hicybercon-2026-web",
+    "title": "HI Cyber Con 2026 — Web",
+    "category": "Web · CTF · 2 challenges",
+    "summary": "Orphaned Context and Whisper in one article, with a section for each challenge.",
+    "parts": [
+      {
+        "title": "Orphaned Context",
+        "slug": "orphaned-context-en"
+      },
+      {
+        "title": "Whisper",
+        "slug": "whisper-en"
+      }
+    ],
+    "cover": "covers/hicybercon.png",
+    "coverFit": "contain",
+    "coverTheme": "light"
+  },
+  {
+    "slug": "cryovault-web-en",
+    "title": "Cryovault — Web write-ups",
+    "category": "Web · CTF · 3 challenges",
+    "summary": "Attestation, ISFCR, and The Meridian in one article with a challenge-based table of contents.",
+    "cover": "covers/cryovault.png",
+    "coverFit": "contain",
+    "coverTheme": "dark"
+  }
+]

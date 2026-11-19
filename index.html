@@ -5,11 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Quoc Thai - Information Security Student, Aspiring Penetration Tester, CTF Player. Cybersecurity portfolio featuring pentesting labs, vulnerability assessment, Hack The Box and CTF write-ups." />
   <meta name="author" content="Quoc Thai" />
-  <meta name="theme-color" content="#071018" />
+  <meta name="theme-color" content="#080808" />
   <title>Quoc Thai | Cybersecurity Portfolio</title>
-  <link rel="stylesheet" href="style.css?v=11" />
+  <link rel="stylesheet" href="style.css?v=30" />
+  <link rel="stylesheet" href="design-overrides.css?v=31" />
+  <link rel="stylesheet" href="writeups/cards.css?v=30" />
+  <link rel="stylesheet" href="home.css?v=30" />
+  <script src="breadcrumbs.js?v=1" defer></script>
 </head>
-<body>
+<body class="home-page">
   <div class="security-bg-icons" aria-hidden="true"></div>
 
   <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -25,10 +29,7 @@
       </a>
 
       <div class="nav-actions" aria-label="Display controls">
-        <button class="control-btn theme-toggle" type="button" aria-label="Switch to light mode" aria-pressed="false">
-          <span class="theme-icon" aria-hidden="true">☾</span>
-          <span class="theme-text" data-i18n="control.themeDark">Dark</span>
-        </button>
+        <button class="theme-toggle uiverse-switch" type="button" role="switch" aria-label="Switch to light mode" aria-checked="false"><span class="switch-moon" aria-hidden="true">☾</span><span class="switch-sun" aria-hidden="true">☀</span><span class="switch-slider" aria-hidden="true"></span></button>
       </div>
 
       <button class="nav-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false">
@@ -38,13 +39,10 @@
       </button>
 
       <ul class="nav-links">
-        <li><a href="#about" data-i18n="nav.about">About</a></li>
-        <li><a href="#skills" data-i18n="nav.skills">Skills</a></li>
-        <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
-        <li><a href="#writeups" data-i18n="nav.writeups">Write-ups</a></li>
-        <li><a href="#notes" data-i18n="nav.notes">Notes</a></li>
-        <li><a href="#roadmap" data-i18n="nav.roadmap">Roadmap</a></li>
-        <li><a href="#contact" class="nav-cta" data-i18n="nav.contact">Contact</a></li>
+        <li><a class="nav-cyber" data-text="/project" href="section.html?view=projects">/project</a></li>
+        <li><a class="nav-cyber" data-text="/writeup" href="writeups/index.html">/writeup</a></li>
+        <li><a class="nav-cyber" data-text="/skill" href="section.html?view=skills">/skill</a></li>
+        <li><a class="nav-cyber" data-text="/notes" href="section.html?view=notes">/notes</a></li>
         <li class="nav-lang-item nav-cta-right">
           <button class="control-btn lang-toggle" type="button" aria-label="Switch to Vietnamese" aria-pressed="false">
             <img class="lang-flag" src="assets/flags/gb.svg" alt="English flag" />
@@ -53,6 +51,12 @@
       </ul>
     </nav>
   </header>
+  <nav class="page-breadcrumb container" aria-label="Breadcrumb">
+    <a href="index.html" aria-label="Home">~/</a>
+    <span class="breadcrumb-separator" aria-hidden="true">&gt;</span>
+    <span data-breadcrumb-current aria-current="page">home</span>
+  </nav>
+
 
   <main id="main-content">
     <section class="hero section-padding" aria-labelledby="hero-title">
@@ -94,7 +98,7 @@
         <div class="hero-content reveal">
           <p class="eyebrow" data-i18n="hero.eyebrow">Hi, this is</p>
           <h1 id="hero-title" data-i18n="hero.name">Quoc Thai</h1>
-          <h2 data-i18n="hero.role">Information Security Student | Aspiring Pentester | CTF Player</h2>
+          <h2 data-i18n="hero.role">Security • Red Team • Pentest Web • RE • OSINT</h2>
 
           <span class="hero-divider" aria-hidden="true"></span>
 
@@ -124,26 +128,18 @@
           </div>
 
           <div class="hero-actions" aria-label="Primary actions">
-            <a href="#projects" class="btn btn-primary" data-i18n="hero.viewProjects">View Projects</a>
-            <a href="#writeups" class="btn btn-secondary" data-i18n="hero.readWriteups">Read Write-ups</a>
+            <a href="section.html?view=projects" class="btn btn-primary" data-i18n="hero.viewProjects">View Projects</a>
+            <a href="writeups/index.html" class="btn btn-secondary" data-i18n="hero.readWriteups">Read Write-ups</a>
           </div>
 
-          <div class="hero-metrics" aria-label="Portfolio focus areas">
-            <div>
-              <strong>PENTEST</strong>
-              <span data-i18n="hero.metric1">Web &amp; Network</span>
-            </div>
-            <div>
-              <strong>NMAP</strong>
-              <span data-i18n="hero.metric2">Enumeration</span>
-            </div>
-            <div>
-              <strong>CTF</strong>
-              <span data-i18n="hero.metric3">Write-ups</span>
-            </div>
-          </div>
         </div>
       </div>
+    </section>
+
+    <section class="latest-posts container" id="latest-posts" aria-labelledby="latest-posts-title">
+      <div class="latest-heading"><div><p class="post-kicker">FROM THE LAB</p><h2 id="latest-posts-title">Latest posts</h2></div><a href="writeups/index.html">All write-ups</a></div>
+      <div id="markdown-posts" class="writeup-feed" data-layout="compact" aria-live="polite"><p>Loading articles...</p></div>
+      <noscript><p><a href="writeups/index.html">Browse the write-up archive</a> or <a href="https://github.com/wurthai/ctf-writeups">read the Markdown posts on GitHub</a>.</p></noscript>
     </section>
 
     <section class="about section-padding" id="about" aria-labelledby="about-title">
@@ -449,7 +445,6 @@
     <section class="projects section-padding" id="projects" aria-labelledby="projects-title">
       <div class="container">
         <div class="section-heading reveal">
-          <p class="eyebrow" data-i18n="projects.eyebrow">Projects</p>
           <h2 id="projects-title" data-i18n="projects.title">Hands-on cybersecurity projects</h2>
           <p data-i18n="projects.subtitle">Practical labs and documentation focused on investigation, detection, and evidence-based analysis.</p>
         </div>
@@ -538,268 +533,53 @@
       </div>
     </section>
 
-    <section class="writeups section-padding" id="writeups" aria-labelledby="writeups-title">
+    <section class="writeups-preview section-padding" aria-labelledby="writeups-preview-title"><div class="container"><div class="section-heading reveal"><p class="eyebrow" data-i18n="writeups.eyebrow">CTF Write-ups</p><h2 id="writeups-preview-title" data-i18n="writeups.title">Challenge notes and solving methodology</h2><p data-i18n="writeups.subtitle">Blog-style cards for documenting the problem, evidence, exploitation path, and lessons learned.</p><a class="btn btn-primary" href="writeups/index.html">Explore write-ups →</a></div></div></section>
+
+    <section class="notes section-padding" id="notes" aria-labelledby="notes-title">
       <div class="container">
-        <div class="section-heading centered reveal">
-          <p class="eyebrow" data-i18n="writeups.eyebrow">CTF Write-ups</p>
-          <h2 id="writeups-title" data-i18n="writeups.title">Challenge notes and solving methodology</h2>
-          <p data-i18n="writeups.subtitle">Blog-style cards for documenting the problem, evidence, exploitation path, and lessons learned.</p>
+        <div class="section-heading reveal">
+          <p class="eyebrow" data-i18n="notes.eyebrow">Pentest field notes</p>
+          <h2 id="notes-title" data-i18n="notes.title">From reconnaissance to reporting</h2>
+          <p data-i18n="notes.subtitle">A practical checklist for learning and testing in authorized labs. Open a topic to review the workflow.</p>
         </div>
-
-        <div class="writeup-terminal reveal" aria-label="CTF write-up terminal list">
-  <div class="writeup-terminal-bg" aria-hidden="true">
-    <p>ctf@hackerlab:~/writeups$ cat CTF_WRITEUPS.log</p>
-    <p>[INFO] Starting scan...</p>
-    <p>[INFO] Parsing challenge evidence...</p>
-    <p>syslog mackor:732041: [bileup.]</p>
-    <p>0x0000 00 02 51 04 05 06 11 11</p>
-    <p>0x0010 00 00 14 02 01 04 07 0A</p>
-    <p>SHA256: ...36a4374a2a79c2582700b081325af3b7020bc00</p>
-  </div>
-
-  <div class="writeup-terminal-window">
-  <div class="writeup-card-topbar">
-    <span class="topbar-dot red"></span>
-    <span class="topbar-dot yellow"></span>
-    <span class="topbar-dot green"></span>
-    <span class="topbar-title">~/writeups/CTF_WRITEUPS.log</span>
-  </div>
-    <div class="writeup-shell-line">
-      <span class="shell-user">ctf@hackerlab</span><span>:</span><span class="shell-path">~/writeups</span><span>$</span>
-      <strong>cat CTF_WRITEUPS.log</strong>
-    </div>
-
-    <div class="writeup-log-table">
-      <article class="writeup-log-row">
-        <div class="writeup-log-left">
-          <div class="request-id">
-            <span class="req-icon">▣</span>
-            <strong>[REQ-01: FILE_VULNERABILITY]</strong>
+        <div class="pentest-notebook reveal">
+          <div class="terminal-header"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span><span class="terminal-title">~/pentest/field-notes.md</span></div>
+          <div class="pentest-notes-grid">
+          <details class="pentest-note" open>
+            <summary><span class="note-number">01</span><span data-i18n="notes.topic0.title">Scope & preparation</span><span class="note-toggle" aria-hidden="true">+</span></summary>
+            <div class="pentest-note-body"><p data-i18n="notes.topic0.body">Define the target, permitted techniques and stop conditions. Record the lab setup and keep a clean baseline before testing.</p><p class="note-workflow">Scope → Targets → Constraints → Baseline</p></div>
+          </details>
+          <details class="pentest-note">
+            <summary><span class="note-number">02</span><span data-i18n="notes.topic1.title">Reconnaissance & enumeration</span><span class="note-toggle" aria-hidden="true">+</span></summary>
+            <div class="pentest-note-body"><p data-i18n="notes.topic1.body">Identify hosts, ports and services in scope. Verify service versions and turn observations into testable hypotheses; an open port alone is not a vulnerability.</p><p class="note-workflow">Hosts → Ports → Services → Hypotheses</p></div>
+          </details>
+          <details class="pentest-note">
+            <summary><span class="note-number">03</span><span data-i18n="notes.topic2.title">Web application testing</span><span class="note-toggle" aria-hidden="true">+</span></summary>
+            <div class="pentest-note-body"><p data-i18n="notes.topic2.body">Map routes, inputs and user roles. Review authentication, session handling, access control and file upload behavior. Compare expected and actual responses in the lab.</p><p class="note-workflow">Map → Intercept → Modify → Compare</p></div>
+          </details>
+          <details class="pentest-note">
+            <summary><span class="note-number">04</span><span data-i18n="notes.topic3.title">Validate & collect evidence</span><span class="note-toggle" aria-hidden="true">+</span></summary>
+            <div class="pentest-note-body"><p data-i18n="notes.topic3.body">Reproduce a suspected issue with the smallest necessary test. Save the request, response and reproduction steps. Separate confirmed impact from assumptions.</p><p class="note-workflow">Hypothesis → Reproduction → Evidence → Impact</p></div>
+          </details>
+          <details class="pentest-note">
+            <summary><span class="note-number">05</span><span data-i18n="notes.topic4.title">Linux & Windows lab review</span><span class="note-toggle" aria-hidden="true">+</span></summary>
+            <div class="pentest-note-body"><p data-i18n="notes.topic4.body">Inspect users, permissions, services and configuration. In a practice lab, investigate how excessive privileges or exposed secrets could create an escalation path.</p><p class="note-workflow">Users → Permissions → Services → Configuration</p></div>
+          </details>
+          <details class="pentest-note">
+            <summary><span class="note-number">06</span><span data-i18n="notes.topic5.title">Report, remediate & retest</span><span class="note-toggle" aria-hidden="true">+</span></summary>
+            <div class="pentest-note-body"><p data-i18n="notes.topic5.body">Document the affected component, evidence, impact and remediation. Provide repeatable steps, retest the fix and restore the lab after the exercise.</p><p class="note-workflow">Finding → Evidence → Remediation → Retest</p></div>
+          </details>
           </div>
-          <p>Type: <span class="type-badge web" data-i18n="writeups.c1Cat">Web Exploitation</span></p>
         </div>
-
-        <div class="writeup-log-main">
-          <h3 data-i18n="writeups.c1Title">File Upload Vulnerability Lab</h3>
-          <p data-i18n="writeups.c1Desc">
-            Analyzing weak upload validation, identifying execution paths, and documenting controlled exploitation steps.
-          </p>
-        </div>
-
-        <a
-          href="https://github.com/thaihq-ns/ctf-writeups"
-          class="execute-btn execute-link"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Open File Upload Vulnerability write-up"
-        >
-          <span class="execute-status"></span>
-          <span class="execute-text">Execute: writeup.sh</span>
-          <span class="execute-arrow">→</span>
-        </a>
-      </article>
-
-      <article class="writeup-log-row">
-        <div class="writeup-log-left">
-          <div class="request-id">
-            <span class="req-icon">▤</span>
-            <strong>[REQ-02: REGISTRY_INVEST]</strong>
-          </div>
-          <p>Type: <span class="type-badge forensics" data-i18n="writeups.c2Cat">Digital Forensics</span></p>
-        </div>
-
-        <div class="writeup-log-main">
-          <h3 data-i18n="writeups.c2Title">Windows Registry Investigation</h3>
-          <p data-i18n="writeups.c2Desc">
-            Reviewing registry artifacts, deleted traces, persistence indicators, and evidence extraction workflow.
-          </p>
-        </div>
-
-        <a
-          href="https://github.com/thaihq-ns/ctf-writeups"
-          class="execute-btn execute-link"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Open Windows Registry Investigation write-up"
-        >
-          <span class="execute-status"></span>
-          <span class="execute-text">Execute: writeup.sh</span>
-          <span class="execute-arrow">→</span>
-        </a>
-      </article>
-
-      <article class="writeup-log-row">
-        <div class="writeup-log-left">
-          <div class="request-id">
-            <span class="req-icon">⌕</span>
-            <strong>[REQ-03: OSINT_SEARCH]</strong>
-          </div>
-          <p>Type: <span class="type-badge osint">OSINT</span></p>
-        </div>
-
-        <div class="writeup-log-main">
-          <h3 data-i18n="writeups.c3Title">Public Source Investigation</h3>
-          <p data-i18n="writeups.c3Desc">
-            Using public metadata, visible clues, and structured search methods without crossing privacy boundaries.
-          </p>
-        </div>
-
-        <a
-          href="https://github.com/thaihq-ns/ctf-writeups"
-          class="execute-btn execute-link"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Open OSINT Investigation write-up"
-        >
-          <span class="execute-status"></span>
-          <span class="execute-text">Execute: osint_lookup.sh</span>
-          <span class="execute-arrow">→</span>
-        </a>
-      </article>
-
-      <article class="writeup-log-row">
-        <div class="writeup-log-left">
-          <div class="request-id">
-            <span class="req-icon">◈</span>
-            <strong>[REQ-04: BINARY_ANALYSIS]</strong>
-          </div>
-          <p>Type: <span class="type-badge reverse" data-i18n="writeups.c4Cat">Reverse Engineering</span></p>
-        </div>
-
-        <div class="writeup-log-main">
-          <h3 data-i18n="writeups.c4Title">Basic Binary Analysis</h3>
-          <p data-i18n="writeups.c4Desc">
-            Reading program behavior, identifying strings, checking file formats, and building a repeatable analysis process.
-          </p>
-        </div>
-
-       <a
-          href="https://github.com/thaihq-ns/ctf-writeups"
-          class="execute-btn execute-link"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Open Basic Binary Analysis write-up"
-        >
-          <span class="execute-status"></span>
-          <span class="execute-text">Execute: binary_disasm.exe</span>
-          <span class="execute-arrow">→</span>
-        </a>
-    </div>
-
-    <div class="writeup-shell-footer">
-      <span class="shell-user">ctf@hackerlab</span><span>:</span><span class="shell-path">~/writeups</span><span>$</span>
-      <span class="terminal-cursor"></span>
-    </div>
-  </div>
-</div>
       </div>
     </section>
-
-    <section class="notes section-padding threat-intel-section" id="notes" aria-labelledby="notes-title">
-  <div class="container">
-    <div class="section-heading reveal">
-      <p class="eyebrow">GHI CHÚ BẢO MẬT</p>
-      <h2 id="notes-title">Bản đồ cảnh báo an ninh mạng</h2>
-      <p>
-        Mỗi điểm đỏ đại diện cho một bài viết, lỗ hổng bảo mật hoặc sự kiện tấn công đáng chú ý.
-        Nhấp vào cảnh báo để xem chi tiết phân tích.
-      </p>
-    </div>
-
-    <div class="intel-board reveal threat-map-only">
-  <div class="intel-map-card">
-    <div class="intel-card-topbar">
-      <span class="topbar-dot red"></span>
-      <span class="topbar-dot yellow"></span>
-      <span class="topbar-dot green"></span>
-      <span class="topbar-title">~/threat_ops/global_alerts.conf</span>
-    </div>
-
-    <div class="globe-stage">
-      <div class="globe-sphere threat-map-stage">
-        <img
-  src="assets/world-map.png"
-  alt=""
-  class="threat-map-image"
-  aria-hidden="true"
-/>
-        <div class="threat-map-vignette" aria-hidden="true"></div>
-        
-
-        <svg class="attack-lines" viewBox="0 0 1000 520" aria-hidden="true">
-          <defs>
-            <filter id="redGlow">
-              <feGaussianBlur stdDeviation="3.2" result="blur"></feGaussianBlur>
-              <feMerge>
-                <feMergeNode in="blur"></feMergeNode>
-                <feMergeNode in="SourceGraphic"></feMergeNode>
-              </feMerge>
-            </filter>
-          </defs>
-
-      
-        </svg>
-
-        <!-- alert pins -->
-        <button class="threat-pin map-pin pin-us" data-threat="0" aria-label="United States alert"><span></span></button>
-        <button class="threat-pin map-pin pin-br" data-threat="1" aria-label="Brazil alert"><span></span></button>
-        <button class="threat-pin map-pin pin-de" data-threat="2" aria-label="Germany alert"><span></span></button>
-        <button class="threat-pin map-pin pin-ke" data-threat="3" aria-label="Kenya alert"><span></span></button>
-        <button class="threat-pin map-pin pin-jp" data-threat="4" aria-label="Japan alert"><span></span></button>
-        <button class="threat-pin map-pin pin-au" data-threat="5" aria-label="Australia alert"><span></span></button>
-
-        <!-- small ambient sparks -->
-        <span class="threat-spark spark-1"></span>
-        <span class="threat-spark spark-2"></span>
-        <span class="threat-spark spark-3"></span>
-        <span class="threat-spark spark-4"></span>
-        <span class="threat-spark spark-5"></span>
-        <span class="threat-spark spark-6"></span>
-        <span class="threat-spark spark-7"></span>
-        <span class="threat-spark spark-8"></span>
-        <span class="threat-spark spark-9"></span>
-        <span class="threat-spark spark-10"></span>
-
-        <!-- connector line -->
-        <div class="threat-connector" id="threatConnector"></div>
-
-        <!-- floating popup -->
-        <div class="threat-hover-card" id="threatHoverCard">
-          <div class="hover-card-head">
-            <span class="hover-severity" id="hoverSeverity">Critical</span>
-            <span class="hover-region" id="hoverRegion">United States</span>
-          </div>
-
-          <span class="hover-category" id="hoverCategory">Web Exploitation</span>
-          <h3 id="hoverTitle">Critical file transfer vulnerability exploitation</h3>
-          <p id="hoverSummary">
-            Large-scale exploitation of a file transfer platform vulnerability led to widespread incident response.
-          </p>
-
-          <div class="hover-meta">
-            <span id="hoverDate">May 2023</span>
-            <span id="hoverCVE">CVE-2023-34362</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="intel-mini-legend">
-        <span><i></i> Active alert node</span>
-        <span><b></b> Hover to inspect incident</span>
-      </div>
-    </div>
-  </div>
-</div>
-</section>
 
         <section class="roadmap section-padding roadmap-cyber" id="roadmap" aria-labelledby="roadmap-title">
         <div class="container">
           <div class="section-heading centered reveal">
             <p class="eyebrow" data-i18n="roadmap.eyebrow">Learning Roadmap</p>
-            <h2 id="roadmap-title" data-i18n="roadmap.title">Cybersecurity learning path</h2>
-            <p data-i18n="roadmap.subtitle">
-              A practical path toward SOC analysis, detection engineering fundamentals, and stronger portfolio documentation.
-            </p>
+            <h2 id="roadmap-title" data-i18n="roadmap.title">My path toward penetration testing</h2>
+            <p data-i18n="roadmap.subtitle">A learning plan built on networking and system foundations. These milestones describe the direction I am working toward, not completed certifications.</p>
           </div>
 
           <div class="roadmap-panel reveal" aria-label="Cybersecurity learning roadmap">
@@ -807,57 +587,57 @@
               <article class="roadmap-node">
                 <div class="roadmap-number">01</div>
                 <div class="roadmap-icon">⌁</div>
-                <h3 data-i18n="roadmap.s1">Networking fundamentals</h3>
-                <p data-i18n="roadmap.s1Desc">TCP/IP, routing, switching, DNS, HTTP, ports and basic network troubleshooting.</p>
+                <h3 data-i18n="roadmap.s1">Networking & HTTP foundations</h3>
+                <p data-i18n="roadmap.s1Desc">Review TCP/IP, DNS, routing, TLS and the HTTP request/response lifecycle.</p>
               </article>
 
               <article class="roadmap-node">
                 <div class="roadmap-number">02</div>
                 <div class="roadmap-icon">▣</div>
-                <h3 data-i18n="roadmap.s2">Linux and Windows fundamentals</h3>
-                <p data-i18n="roadmap.s2Desc">Operating system basics, users, services, permissions, logs and command-line workflow.</p>
+                <h3 data-i18n="roadmap.s2">Linux, Windows & scripting</h3>
+                <p data-i18n="roadmap.s2Desc">Build confidence with users, permissions, services, Bash and Python for small lab automation tasks.</p>
               </article>
 
               <article class="roadmap-node">
                 <div class="roadmap-number">03</div>
                 <div class="roadmap-icon">◎</div>
-                <h3 data-i18n="roadmap.s3">Log analysis and SIEM basics</h3>
-                <p data-i18n="roadmap.s3Desc">Collecting, reading and correlating security logs through SIEM investigation workflows.</p>
+                <h3 data-i18n="roadmap.s3">Scope & enumeration</h3>
+                <p data-i18n="roadmap.s3Desc">Define rules of engagement, map the attack surface and practice service enumeration with Nmap in labs.</p>
               </article>
 
               <article class="roadmap-node">
                 <div class="roadmap-number">04</div>
                 <div class="roadmap-icon">⚠</div>
-                <h3 data-i18n="roadmap.s4">SOC alert triage</h3>
-                <p data-i18n="roadmap.s4Desc">Classifying alerts, reviewing context, reducing false positives and escalating real incidents.</p>
+                <h3 data-i18n="roadmap.s4">Web application security</h3>
+                <p data-i18n="roadmap.s4Desc">Practice authentication, access control, input validation and session testing with Burp Suite in training labs.</p>
               </article>
 
               <article class="roadmap-node">
                 <div class="roadmap-number">05</div>
                 <div class="roadmap-icon">≋</div>
-                <h3 data-i18n="roadmap.s5">MITRE ATT&CK and threat detection</h3>
-                <p data-i18n="roadmap.s5Desc">Mapping behavior to tactics and techniques, then improving detection coverage.</p>
+                <h3 data-i18n="roadmap.s5">Vulnerability validation</h3>
+                <p data-i18n="roadmap.s5Desc">Reproduce findings safely in a controlled lab, collect evidence and distinguish false positives from confirmed issues.</p>
               </article>
 
               <article class="roadmap-node">
                 <div class="roadmap-number">06</div>
                 <div class="roadmap-icon">⌕</div>
-                <h3 data-i18n="roadmap.s6">Digital forensics and malware basics</h3>
-                <p data-i18n="roadmap.s6Desc">Reviewing artifacts, persistence traces, file behavior, suspicious commands and IOCs.</p>
+                <h3 data-i18n="roadmap.s6">Privilege escalation labs</h3>
+                <p data-i18n="roadmap.s6Desc">Study Linux and Windows misconfigurations, service permissions and escalation paths in practice environments.</p>
               </article>
 
               <article class="roadmap-node">
                 <div class="roadmap-number">07</div>
                 <div class="roadmap-icon">⚑</div>
-                <h3 data-i18n="roadmap.s7">CTF practice and project documentation</h3>
-                <p data-i18n="roadmap.s7Desc">Solving challenges, writing reports, documenting evidence and building repeatable notes.</p>
+                <h3 data-i18n="roadmap.s7">End-to-end practice</h3>
+                <p data-i18n="roadmap.s7Desc">Work through CTF and Hack The Box labs, connecting enumeration, validation and clear documentation.</p>
               </article>
 
               <article class="roadmap-node">
                 <div class="roadmap-number">08</div>
                 <div class="roadmap-icon">▤</div>
-                <h3 data-i18n="roadmap.s8">Build a strong SOC Analyst portfolio</h3>
-                <p data-i18n="roadmap.s8Desc">Publishing labs, write-ups, detection notes and practical investigation projects.</p>
+                <h3 data-i18n="roadmap.s8">Reporting & retesting</h3>
+                <p data-i18n="roadmap.s8Desc">Write concise pentest reports with evidence, impact, remediation and retest results; publish permitted lab write-ups.</p>
               </article>
             </div>
           </div>
@@ -923,6 +703,7 @@
     </div>
   </footer>
 
-  <script src="script.js?v=12"></script>
+  <script src="script.js?v=18"></script>
+  <script src="writeups/posts.js?v=4"></script>
 </body>
 </html>
