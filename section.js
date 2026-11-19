@@ -12,8 +12,6 @@ if (!allowed.has(view)) {
     const section = doc.getElementById(view);
     if (!section) throw new Error('Section missing.');
     main.append(document.importNode(section, true));
-    const contact = doc.getElementById('contact');
-    if (contact) main.append(document.importNode(contact, true));
     document.title = `${view[0].toUpperCase() + view.slice(1)} | Quoc Thai`;
     document.querySelector(`.nav-links a[href="section.html?view=${view}"]`)?.setAttribute('aria-current', 'page');
     const script = document.createElement('script'); script.src = 'script.js?v=18'; document.body.append(script);
